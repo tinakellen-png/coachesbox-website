@@ -31,6 +31,10 @@ function decode(buf) {
 }
 
 function editProducts(html) {
+  // (0) update the "Core Products" hero stat 4 -> 3 (ScoutIQ removed)
+  var cnt = '<div class="product-hero-stat__num">4</div>';
+  if (html.indexOf(cnt) < 0) throw new Error('EDIT FAIL: core-products count 4 not found');
+  html = html.replace(cnt, '<div class="product-hero-stat__num">3</div>');
   // (1) remove ScoutIQ block
   var m = html.indexOf('ScoutIQ');
   if (m < 0) throw new Error('EDIT FAIL: ScoutIQ marker not found');
