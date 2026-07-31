@@ -61,6 +61,16 @@ function editProducts(html) {
 }
 
 function editIndex(html) {
+  // remove the ScoutIQ product card from the homepage products overview
+  var s = html.indexOf('ScoutIQ');
+  if (s < 0) throw new Error('EDIT FAIL: homepage ScoutIQ not found');
+  var cardStart = html.lastIndexOf('<article', s);
+  var cardEnd = html.indexOf('</article>', s);
+  if (cardStart < 0 || cardEnd < 0) throw new Error('EDIT FAIL: homepage ScoutIQ card bounds');
+  cardEnd += '</article>'.length;
+  html = html.slice(0, cardStart) + html.slice(cardEnd);
+  if (html.indexOf('ScoutIQ') >= 0) throw new Error('EDIT FAIL: homepage ScoutIQ still present');
+  // add David Langdon's quote right after Tina's
   var a = html.indexOf('pull-quote__author">Tina Langdon');
   if (a < 0) throw new Error('EDIT FAIL: Tina quote not found');
   var close = html.indexOf('</blockquote>', a);
