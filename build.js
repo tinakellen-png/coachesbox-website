@@ -1,0 +1,91 @@
+// ---------------------------------------------------------------------------
+// coachesbox-website build step
+// ---------------------------------------------------------------------------
+// Every source file in this repo is stored as {"data":"<base64>"} — a snapshot
+// captured from the live deployment. This script decodes each file back to its
+// real content, applies the approved content edits, and writes the finished
+// static site into ./dist , which Vercel serves.
+//   Edits:  (1) remove the ScoutIQ Film Analysis product block
+//           (2) renumber CoachSync 04 -> 03
+//           (3) add the Simulator Pricing block under the simulator
+//           (4) add David Langdon's quote beside Tina's on the homepage
+// Each edit hard-fails the build if its anchor is missing, so a broken build
+// never reaches production.
+// ---------------------------------------------------------------------------
+var fs = require('fs');
+var path = require('path');
+
+var ROOT = __dirname;
+var OUT = path.join(ROOT, 'dist');
+var SKIP = ['.git', 'dist', 'node_modules', 'build.js', 'package.json', 'package-lock.json', 'vercel.json', '.vercel', 'README.md'];
+
+var PRICING_HTML = Buffer.from('PGRpdiBjbGFzcz0ic2ltLXByaWNpbmciIGRhdGEtcmV2ZWFsIHN0eWxlPSJwYWRkaW5nLWJsb2NrOiB2YXIoLS1zcGFjZS0xNik7IGJvcmRlci1ib3R0b206IDFweCBzb2xpZCB2YXIoLS1jb2xvci1ib3JkZXIpOyI+CiAgICAgICAgICA8ZGl2IHN0eWxlPSJ0ZXh0LWFsaWduOmNlbnRlcjsgbWF4LXdpZHRoOjY4MHB4OyBtYXJnaW4taW5saW5lOmF1dG87Ij4KICAgICAgICAgICAgPHNwYW4gY2xhc3M9ImJhZGdlIGJhZGdlLS1uZXciPkF2YWlsYWJsZSBOb3c8L3NwYW4+CiAgICAgICAgICAgIDxoMiBjbGFzcz0icHJvZHVjdC1mZWF0dXJlX190aXRsZSIgc3R5bGU9Im1hcmdpbi10b3A6IHZhcigtLXNwYWNlLTQpOyI+U2ltdWxhdG9yIFByaWNpbmc8L2gyPgogICAgICAgICAgICA8cCBjbGFzcz0icHJvZHVjdC1mZWF0dXJlX19kZXNjIj5Bbm51YWwgc3Vic2NyaXB0aW9uIGZvciB0aGUgVmlydHVhbCBQcmFjdGljZSBTaW11bGF0b3IuIFBhdGVudCBQZW5kaW5nLjwvcD4KICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPGRpdiBzdHlsZT0iZGlzcGxheTpncmlkOyBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpOyBnYXA6IHZhcigtLXNwYWNlLTYpOyBtYXJnaW4tdG9wOiB2YXIoLS1zcGFjZS0xMCk7Ij4KICAgICAgICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDogdmFyKC0tYmxhY2spOyBib3JkZXI6MXB4IHNvbGlkIHJnYmEoMjAwLDE2OCw3NSwwLjI1KTsgYm9yZGVyLXJhZGl1czogdmFyKC0tcmFkaXVzLXhsKTsgcGFkZGluZzogdmFyKC0tc3BhY2UtOCk7IHRleHQtYWxpZ246Y2VudGVyOyI+CiAgICAgICAgICAgICAgPGRpdiBzdHlsZT0idGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOyBsZXR0ZXItc3BhY2luZzowLjA4ZW07IGZvbnQtc2l6ZTowLjhyZW07IGNvbG9yOnJnYmEoMjU1LDI1NSwyNTUsMC42KTsiPlNjaG9vbDwvZGl2PgogICAgICAgICAgICAgIDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5OidCZWJhcyBOZXVlJywgSW1wYWN0LCBzYW5zLXNlcmlmOyBmb250LXNpemU6Mi44cmVtOyBsaW5lLWhlaWdodDoxLjA1OyBjb2xvcjojYjhhODRiOyBtYXJnaW4tdG9wOiB2YXIoLS1zcGFjZS0yKTsiPiQ0OTguODg8L2Rpdj4KICAgICAgICAgICAgICA8ZGl2IHN0eWxlPSJjb2xvcjpyZ2JhKDI1NSwyNTUsMjU1LDAuNik7IGZvbnQtc2l6ZTowLjlyZW07Ij5wZXIgeWVhcjwvZGl2PgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDogdmFyKC0tYmxhY2spOyBib3JkZXI6MXB4IHNvbGlkIHJnYmEoMjAwLDE2OCw3NSwwLjI1KTsgYm9yZGVyLXJhZGl1czogdmFyKC0tcmFkaXVzLXhsKTsgcGFkZGluZzogdmFyKC0tc3BhY2UtOCk7IHRleHQtYWxpZ246Y2VudGVyOyI+CiAgICAgICAgICAgICAgPGRpdiBzdHlsZT0idGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOyBsZXR0ZXItc3BhY2luZzowLjA4ZW07IGZvbnQtc2l6ZTowLjhyZW07IGNvbG9yOnJnYmEoMjU1LDI1NSwyNTUsMC42KTsiPlVuaXZlcnNpdHk8L2Rpdj4KICAgICAgICAgICAgICA8ZGl2IHN0eWxlPSJmb250LWZhbWlseTonQmViYXMgTmV1ZScsIEltcGFjdCwgc2Fucy1zZXJpZjsgZm9udC1zaXplOjIuOHJlbTsgbGluZS1oZWlnaHQ6MS4wNTsgY29sb3I6I2M4YTg0YjsgbWFyZ2luLXRvcDogdmFyKC0tc3BhY2UtMik7Ij4kMSw0OTguODg8L2Rpdj4KICAgICAgICAgICAgICA8ZGl2IHN0eWxlPSJjb2xvcjpyZ2JhKDI1NSwyNTUsMjU1LDAuNik7IGZvbnQtc2l6ZTowLjlyZW07Ij5wZXIgeWVhcjwvZGl2PgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgPGRpdiBzdHlsZT0iYmFja2dyb3VuZDogdmFyKC0tYmxhY2spOyBib3JkZXI6MXB4IHNvbGlkIHJnYmEoMjAwLDE2OCw3NSwwLjI1KTsgYm9yZGVyLXJhZGl1czogdmFyKC0tcmFkaXVzLXhsKTsgcGFkZGluZzogdmFyKC0tc3BhY2UtOCk7IHRleHQtYWxpZ246Y2VudGVyOyI+CiAgICAgICAgICAgICAgPGRpdiBzdHlsZT0idGV4dC10cmFuc2Zvcm06dXBwZXJjYXNlOyBsZXR0ZXItc3BhY2luZzowLjA4ZW07IGZvbnQtc2l6ZTowLjhyZW07IGNvbG9yOnJnYmEoMjU1LDI1NSwyNTUsMC42KTsiPkRpc3RyaWN0PC9kaXY+CiAgICAgICAgICAgICAgPGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6J0JlYmFzIE5ldWUnLCBJbXBhY3QsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZToyLjhyZW07IGxpbmUtaGVpZ2h0OjEuMDU7IGNvbG9yOiNjOGE4NGI7IG1hcmdpbi10b3A6IHZhcigtLXNwYWNlLTIpOyI+JDM5OS4xMDwvZGl2PgogICAgICAgICAgICAgIDxkaXYgc3R5bGU9ImNvbG9yOnJnYmEoMjU1LDI1NSwyNTUsMC42KTsgZm9udC1zaXplOjAuOXJlbTsiPnBlciBzY2hvb2wgLyB5ZWFyICZtaWRkb3Q7IDImbmRhc2g7NyBzY2hvb2xzPC9kaXY+CiAgICAgICAgICAgICAgPGRpdiBzdHlsZT0iY29sb3I6cmdiYSgyNTUsMjU1LDI1NSwwLjg1KTsgZm9udC1zaXplOjAuOXJlbTsgbWFyZ2luLXRvcDogdmFyKC0tc3BhY2UtMik7Ij4kMzQ5LjIyIHBlciBzY2hvb2wgJm1pZGRvdDsgOCsgc2Nob29sczwvZGl2PgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZGl2Pg==', 'base64').toString('utf8');
+var DAVID_QUOTE_HTML = Buffer.from('ICAgICAgICAgICAgPGJsb2NrcXVvdGUgY2xhc3M9InB1bGwtcXVvdGUiIHN0eWxlPSJtYXJnaW4tdG9wOiB2YXIoLS1zcGFjZS04KTsiPgogICAgICAgICAgICAgIDxwPiJFdmVyeSBjb2FjaCBrbm93cyB0aGUgcHJvYmxlbTogeW91IGNhbid0IGdldCBlbm91Z2ggcXVhbGl0eSByZXBzIGFnYWluc3QgdGhlIGxvb2tzIHlvdSdsbCBhY3R1YWxseSBzZWUgb24gRnJpZGF5LCBhbmQgYSBzY291dCB0ZWFtIG9ubHkgdGFrZXMgeW91IHNvIGZhci4gVGhlIENvYWNoZXMnIEJveCBjaGFuZ2VzIHRoYXQuIE15IHBsYXllcnMgZ2V0IHVubGltaXRlZCBtZW50YWwgcmVwcyBvZiBhbnkgZm9ybWF0aW9uIGFuZCBjb3ZlcmFnZSwgYW5kIEkgY2FuIGluc3RhbGwgZmFzdGVyIGFuZCBjbGVhbmVyIHRoYW4gSSBldmVyIGNvdWxkIG9uIGEgd2hpdGVib2FyZC4gSXQncyB0aGUgdG9vbCBJIHdpc2ggSSdkIGhhZCBteSB3aG9sZSBjYXJlZXIuIjwvcD4KICAgICAgICAgICAgICA8Zm9vdGVyPgogICAgICAgICAgICAgICAgPHNwYW4gY2xhc3M9InB1bGwtcXVvdGVfX2F1dGhvciI+RGF2aWQgTGFuZ2Rvbjwvc3Bhbj4KICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzPSJwdWxsLXF1b3RlX19yb2xlIj5DaGllZiBGb290YmFsbCBTdHJhdGVneSBPZmZpY2VyICZhbXA7IEN1cnJlbnQgSGVhZCBDb2FjaDwvc3Bhbj4KICAgICAgICAgICAgICA8L2Zvb3Rlcj4KICAgICAgICAgICAgPC9ibG9ja3F1b3RlPg==', 'base64').toString('utf8');
+
+function decode(buf) {
+  try {
+    var j = JSON.parse(buf.toString('utf8'));
+    if (j && typeof j.data === 'string') return Buffer.from(j.data, 'base64');
+  } catch (e) {}
+  return buf;
+}
+
+function editProducts(html) {
+  // (1) remove ScoutIQ block
+  var m = html.indexOf('ScoutIQ');
+  if (m < 0) throw new Error('EDIT FAIL: ScoutIQ marker not found');
+  var openerRev = html.lastIndexOf('data-reveal>', m);
+  var start = html.lastIndexOf('<div class="product-feature', openerRev);
+  var nextRev = html.indexOf('data-reveal>', m);
+  var end = html.lastIndexOf('<div class="product-feature', nextRev);
+  if (start < 0 || end < 0 || end <= start) throw new Error('EDIT FAIL: ScoutIQ bounds');
+  html = html.slice(0, start) + html.slice(end);
+  if (html.indexOf('ScoutIQ') >= 0) throw new Error('EDIT FAIL: ScoutIQ still present');
+  // (2) renumber CoachSync 04 -> 03
+  var num = '<div class="product-feature__number">04</div>';
+  if (html.indexOf(num) < 0) throw new Error('EDIT FAIL: CoachSync number 04 not found');
+  html = html.replace(num, '<div class="product-feature__number">03</div>');
+  // (3) insert pricing right after the simulator (before AI Practice Builder)
+  var ai = html.indexOf('AI Practice Builder');
+  if (ai < 0) throw new Error('EDIT FAIL: AI Practice Builder marker not found');
+  var aiRev = html.lastIndexOf('data-reveal>', ai);
+  var aiStart = html.lastIndexOf('<div class="product-feature', aiRev);
+  if (aiStart < 0) throw new Error('EDIT FAIL: AI block start not found');
+  html = html.slice(0, aiStart) + PRICING_HTML + '\n\n        ' + html.slice(aiStart);
+  if (html.indexOf('Simulator Pricing') < 0) throw new Error('EDIT FAIL: pricing not inserted');
+  return html;
+}
+
+function editIndex(html) {
+  var a = html.indexOf('pull-quote__author">Tina Langdon');
+  if (a < 0) throw new Error('EDIT FAIL: Tina quote not found');
+  var close = html.indexOf('</blockquote>', a);
+  if (close < 0) throw new Error('EDIT FAIL: blockquote close not found');
+  var at = close + '</blockquote>'.length;
+  html = html.slice(0, at) + '\n' + DAVID_QUOTE_HTML + html.slice(at);
+  if (html.indexOf('David Langdon') < 0) throw new Error('EDIT FAIL: David quote not inserted');
+  return html;
+}
+
+function walk(dir) {
+  var entries = fs.readdirSync(dir, { withFileTypes: true });
+  for (var i = 0; i < entries.length; i++) {
+    var e = entries[i];
+    if (SKIP.indexOf(e.name) >= 0) continue;
+    var abs = path.join(dir, e.name);
+    var rel = path.relative(ROOT, abs).split(path.sep).join('/');
+    if (e.isDirectory()) { walk(abs); continue; }
+    var content = decode(fs.readFileSync(abs));
+    if (rel === 'pages/products.html') content = Buffer.from(editProducts(content.toString('utf8')), 'utf8');
+    else if (rel === 'index.html') content = Buffer.from(editIndex(content.toString('utf8')), 'utf8');
+    var outPath = path.join(OUT, rel);
+    fs.mkdirSync(path.dirname(outPath), { recursive: true });
+    fs.writeFileSync(outPath, content);
+    console.log('wrote ' + rel + ' (' + content.length + ' bytes)');
+  }
+}
+
+fs.rmSync(OUT, { recursive: true, force: true });
+fs.mkdirSync(OUT, { recursive: true });
+walk(ROOT);
+console.log('Build complete.');
