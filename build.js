@@ -126,8 +126,8 @@ function walk(dir) {
     var rel = path.relative(ROOT, abs).split(path.sep).join('/');
     if (e.isDirectory()) { walk(abs); continue; }
     var content = decode(fs.readFileSync(abs));
-    if (rel === 'pages/products.html') content = Buffer.from(editProducts(content.toString('utf8')), 'utf8');
-    else if (rel === 'index.html') content = Buffer.from(editIndex(content.toString('utf8')), 'utf8');
+    // pages/products.html is now stored as final plain HTML (single-play preview baked in); pass through.
+    if (rel === 'index.html') content = Buffer.from(editIndex(content.toString('utf8')), 'utf8');
     var outPath = path.join(OUT, rel);
     fs.mkdirSync(path.dirname(outPath), { recursive: true });
     fs.writeFileSync(outPath, content);
