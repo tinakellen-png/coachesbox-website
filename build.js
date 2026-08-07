@@ -57,6 +57,42 @@ function editProducts(html) {
   if (aiStart < 0) throw new Error('EDIT FAIL: AI block start not found');
   html = html.slice(0, aiStart) + PRICING_HTML + '\n\n        ' + html.slice(aiStart);
   if (html.indexOf('Simulator Pricing') < 0) throw new Error('EDIT FAIL: pricing not inserted');
+
+  // (4) refresh the "See It In Action" copy (was describing the old 2D demo)
+  var oldDesc = 'Watch a Spread formation run a shallow cross against a 4-2 Cover 3 defense, the same way your players will experience it in the simulator.';
+  if (html.indexOf(oldDesc) < 0) throw new Error('EDIT FAIL: demo description not found');
+  html = html.replace(oldDesc, 'A live look at the 3D scout-team simulator &mdash; real formations, real assignments, snapped in front of your players. Tap in and run a play yourself.');
+  var oldEyebrow = '>Live Interactive Demo<';
+  if (html.indexOf(oldEyebrow) < 0) throw new Error('EDIT FAIL: demo eyebrow not found');
+  html = html.replace(oldEyebrow, '>See It Live<');
+  // darken the demo description so it is readable on the light section background
+  var faintDesc = 'color:rgba(255,255,255,0.65);max-width:48ch;';
+  if (html.indexOf(faintDesc) < 0) throw new Error('EDIT FAIL: demo description style not found');
+  html = html.replace(faintDesc, 'color:rgba(10,10,10,0.62);max-width:48ch;');
+
+  // (5) swap the old embedded 2D iframe demo for a still image + "Try It Live" button
+  var boxStart = html.indexOf('<div style="border-radius:12px;overflow:hidden;border:1px solid rgba(200,168,75,0.3);box-shadow:0 8px 40px rgba(0,0,0,0.5);">');
+  var capMarker = html.indexOf('Use Slow / Normal / Fast to control speed.');
+  if (boxStart < 0 || capMarker < 0) throw new Error('EDIT FAIL: demo box/caption bounds');
+  var capEnd = html.indexOf('</p>', capMarker);
+  if (capEnd < 0) throw new Error('EDIT FAIL: demo caption end');
+  capEnd += '</p>'.length;
+  var NEW_DEMO = '<div style="border-radius:12px;overflow:hidden;border:1px solid rgba(200,168,75,0.3);box-shadow:0 8px 40px rgba(0,0,0,0.5);">\n' +
+    '            <img src="../assets/img/sim-3d-preview.jpg" alt="The Coaches\' Box 3D scout-team simulator: offensive line in a 3-point stance across from a scout-team defense on a full 3D field" style="display:block;width:100%;height:auto;">\n' +
+    '          </div>\n' +
+    '          <div style="text-align:center;margin-top:var(--space-6);">\n' +
+    '            <a href="https://coaches-box-sim3d.vercel.app/" target="_blank" rel="noopener" class="btn btn--primary">Try It Live &rarr;</a>\n' +
+    '          </div>';
+  html = html.slice(0, boxStart) + NEW_DEMO + html.slice(capEnd);
+  if (html.indexOf('coaches-box-vps-demo.vercel.app') >= 0) throw new Error('EDIT FAIL: old iframe still present');
+
+  // (6) remove the dead "Coaching Gear / Equip Your Program" affiliate section (links went nowhere)
+  var gearStart = html.indexOf('<!-- Coaching Gear -->');
+  var ctaStart = html.indexOf('<!-- CTA -->');
+  if (gearStart < 0 || ctaStart < 0 || ctaStart <= gearStart) throw new Error('EDIT FAIL: gear/cta bounds');
+  html = html.slice(0, gearStart) + html.slice(ctaStart);
+  if (html.indexOf('Equip Your Program') >= 0) throw new Error('EDIT FAIL: gear section still present');
+
   return html;
 }
 
