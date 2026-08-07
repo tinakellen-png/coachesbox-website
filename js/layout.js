@@ -1,1 +1,156 @@
-{"data":"LyogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiAgIENPQUNIRVMnIEJPWCDigJQgU2hhcmVkIExheW91dCBJbmplY3Rpb24gKG5hdiArIGZvb3RlcikKICAgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09ICovCgpjb25zdCBOQVZfSFRNTCA9IGAKPG5hdiBjbGFzcz0ibmF2IiByb2xlPSJuYXZpZ2F0aW9uIiBhcmlhLWxhYmVsPSJNYWluIG5hdmlnYXRpb24iPgogIDxkaXYgY2xhc3M9ImNvbnRhaW5lciI+CiAgICA8ZGl2IGNsYXNzPSJuYXZfX2lubmVyIj4KICAgICAgPGEgaHJlZj0iaW5kZXguaHRtbCIgY2xhc3M9Im5hdl9fbG9nbyIgYXJpYS1sYWJlbD0iQ29hY2hlcycgQm94IEhvbWUiIHN0eWxlPSJwb3NpdGlvbjpyZWxhdGl2ZTtkaXNwbGF5OmlubGluZS1mbGV4O2FsaWduLWl0ZW1zOmZsZXgtc3RhcnQ7Ij4KICAgICAgICA8aW1nIHNyYz0iaW1hZ2VzL2xvZ28ucG5nIiBhbHQ9IkNvYWNoZXMnIEJveCBMb2dvIiBjbGFzcz0ibmF2X19sb2dvLWltZyI+CiAgICAgICAgPHN1cCBzdHlsZT0iZm9udC1zaXplOjlweDtjb2xvcjojQzhBODRCO2ZvbnQtZmFtaWx5OlRyZWJ1Y2hldCBNUyxzYW5zLXNlcmlmO2ZvbnQtd2VpZ2h0OmJvbGQ7bWFyZ2luLWxlZnQ6MXB4O21hcmdpbi10b3A6M3B4OyI+4oSiPC9zdXA+CiAgICAgIDwvYT4KICAgICAgPHVsIGNsYXNzPSJuYXZfX2xpbmtzIiByb2xlPSJsaXN0Ij4KICAgICAgICA8bGk+PGEgaHJlZj0iaW5kZXguaHRtbCI+SG9tZTwvYT48L2xpPgogICAgICAgIDxsaT48YSBocmVmPSJwYWdlcy9hYm91dC5odG1sIj5BYm91dDwvYT48L2xpPgogICAgICAgIDxsaT48YSBocmVmPSJwYWdlcy9wcm9kdWN0cy5odG1sIj5Qcm9kdWN0czwvYT48L2xpPgogICAgICAgIDxsaT48YSBocmVmPSJwYWdlcy9ibG9nLmh0bWwiPkJsb2c8L2E+PC9saT4KICAgICAgICA8bGk+PGEgaHJlZj0icGFnZXMvY29udGFjdC5odG1sIj5Db250YWN0PC9hPjwvbGk+CiAgICAgIDwvdWw+CiAgICAgIDxkaXYgc3R5bGU9ImRpc3BsYXk6ZmxleDthbGlnbi1pdGVtczpjZW50ZXI7Z2FwOnZhcigtLXNwYWNlLTMpOyI+CiAgICAgICAgPGEgaHJlZj0icGFnZXMvY29udGFjdC5odG1sIiBjbGFzcz0iYnRuIGJ0bi0tcHJpbWFyeSBuYXZfX2N0YSI+R2V0IEVhcmx5IEFjY2VzczwvYT4KICAgICAgICA8YnV0dG9uIGNsYXNzPSJuYXZfX3RvZ2dsZSIgZGF0YS1uYXYtdG9nZ2xlIGFyaWEtZXhwYW5kZWQ9ImZhbHNlIiBhcmlhLWxhYmVsPSJPcGVuIG1lbnUiPgogICAgICAgICAgPHNwYW4+PC9zcGFuPjxzcGFuPjwvc3Bhbj48c3Bhbj48L3NwYW4+CiAgICAgICAgPC9idXR0b24+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgICA8bmF2IGNsYXNzPSJuYXZfX21vYmlsZSIgYXJpYS1sYWJlbD0iTW9iaWxlIG5hdmlnYXRpb24iPgogICAgICA8YSBocmVmPSJpbmRleC5odG1sIj5Ib21lPC9hPgogICAgICA8YSBocmVmPSJwYWdlcy9hYm91dC5odG1sIj5BYm91dDwvYT4KICAgICAgPGEgaHJlZj0icGFnZXMvcHJvZHVjdHMuaHRtbCI+UHJvZHVjdHM8L2E+CiAgICAgIDxhIGhyZWY9InBhZ2VzL2Jsb2cuaHRtbCI+QmxvZzwvYT4KICAgICAgPGEgaHJlZj0icGFnZXMvY29udGFjdC5odG1sIj5Db250YWN0PC9hPgogICAgICA8YSBocmVmPSJwYWdlcy9jb250YWN0Lmh0bWwiIGNsYXNzPSJidG4gYnRuLS1wcmltYXJ5IiBzdHlsZT0ibWFyZ2luLXRvcDp2YXIoLS1zcGFjZS0zKTt3aWR0aDpmaXQtY29udGVudDsiPkdldCBFYXJseSBBY2Nlc3M8L2E+CiAgICA8L25hdj4KICA8L2Rpdj4KPC9uYXY+YDsKCmNvbnN0IEZPT1RFUl9IVE1MID0gYAo8Zm9vdGVyIGNsYXNzPSJmb290ZXIiIHJvbGU9ImNvbnRlbnRpbmZvIj4KICA8ZGl2IGNsYXNzPSJjb250YWluZXIiPgogICAgPGRpdiBjbGFzcz0iZm9vdGVyX19ncmlkIj4KICAgICAgPGRpdiBjbGFzcz0iZm9vdGVyX19icmFuZCI+CiAgICAgICAgPGltZyBzcmM9ImltYWdlcy9sb2dvLnBuZyIgYWx0PSJDb2FjaGVzJyBCb3ggTG9nbyIgY2xhc3M9Im5hdl9fbG9nby1pbWciPgogICAgICAgIDxwPkVtcG93ZXJpbmcgY29hY2hlcyB3aXRoIGlubm92YXRpdmUgdGVjaG5vbG9neSB0aGF0IHRyYW5zZm9ybXMgdGhlIHdheSBhdGhsZXRlcyBsZWFybiwgdGVhbXMgcHJlcGFyZSwgYW5kIHByb2dyYW1zIHN1Y2NlZWQuPC9wPgogICAgICAgIDxwIGNsYXNzPSJmb290ZXJfX3RhZ2xpbmUiPkJVSUxESU5HIEJFVFRFUiBDT0FDSEVTLiBERVZFTE9QSU5HIEJFVFRFUiBMRUFERVJTLjwvcD4KICAgICAgPC9kaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPHAgY2xhc3M9ImZvb3Rlcl9faGVhZGluZyI+Q29tcGFueTwvcD4KICAgICAgICA8dWwgY2xhc3M9ImZvb3Rlcl9fbGlua3MiIHJvbGU9Imxpc3QiPgogICAgICAgICAgPGxpPjxhIGhyZWY9InBhZ2VzL2Fib3V0Lmh0bWwiPkFib3V0IFVzPC9hPjwvbGk+CiAgICAgICAgICA8bGk+PGEgaHJlZj0icGFnZXMvcHJvZHVjdHMuaHRtbCI+UHJvZHVjdHM8L2E+PC9saT4KICAgICAgICAgIDxsaT48YSBocmVmPSJwYWdlcy9ibG9nLmh0bWwiPkJsb2c8L2E+PC9saT4KICAgICAgICAgIDxsaT48YSBocmVmPSJwYWdlcy9jb250YWN0Lmh0bWwiPkNvbnRhY3Q8L2E+PC9saT4KICAgICAgICA8L3VsPgogICAgICA8L2Rpdj4KICAgICAgPGRpdj4KICAgICAgICA8cCBjbGFzcz0iZm9vdGVyX19oZWFkaW5nIj5Qcm9kdWN0czwvcD4KICAgICAgICA8dWwgY2xhc3M9ImZvb3Rlcl9fbGlua3MiIHJvbGU9Imxpc3QiPgogICAgICAgICAgPGxpPjxhIGhyZWY9InBhZ2VzL3Byb2R1Y3RzLmh0bWwiPlZpcnR1YWwgUHJhY3RpY2UgU2ltdWxhdG9yPC9hPjwvbGk+CiAgICAgICAgICA8bGk+PGEgaHJlZj0icGFnZXMvcHJvZHVjdHMuaHRtbCI+QUkgUHJhY3RpY2UgQnVpbGRlcjwvYT48L2xpPgogICAgICAgICAgPGxpPjxhIGhyZWY9InBhZ2VzL3Byb2R1Y3RzLmh0bWwiPlByYWN0aWNlIFBsYW5uaW5nPC9hPjwvbGk+CiAgICAgICAgICA8bGk+PGEgaHJlZj0icGFnZXMvcHJvZHVjdHMuaHRtbCI+QW5hbHl0aWNzPC9hPjwvbGk+CiAgICAgICAgPC91bD4KICAgICAgPC9kaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPHAgY2xhc3M9ImZvb3Rlcl9faGVhZGluZyI+Q29ubmVjdDwvcD4KICAgICAgICA8dWwgY2xhc3M9ImZvb3Rlcl9fbGlua3MiIHJvbGU9Imxpc3QiPgogICAgICAgICAgPGxpPjxhIGhyZWY9Im1haWx0bzppbmZvQGNvYWNoZXNib3guYWkiPmluZm9AY29hY2hlc2JveC5haTwvYT48L2xpPgogICAgICAgICAgPGxpPjxhIGhyZWY9InRlbDozMjEzNzc5NDk0Ij4zMjEuMzc3Ljk0OTQ8L2E+PC9saT4KICAgICAgICAgIDxsaT48YSBocmVmPSIjIj5Ud2l0dGVyIC8gWDwvYT48L2xpPgogICAgICAgICAgPGxpPjxhIGhyZWY9IiMiPkxpbmtlZEluPC9hPjwvbGk+CiAgICAgICAgPC91bD4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImZvb3Rlcl9fYm90dG9tIj4KICAgICAgPHNwYW4+wqkgMjAyNiBUaGUgQ29hY2hlcycgQm944oSiLCBMTEMuIEFsbCByaWdodHMgcmVzZXJ2ZWQuIFBhdGVudCBQZW5kaW5nLjwvc3Bhbj4KICAgICAgPHNwYW4+V2ludGVyIFNwcmluZ3MsIEZsb3JpZGEgwrcgY29hY2hlc2JveC5haTwvc3Bhbj4KICAgIDwvZGl2PgogIDwvZGl2Pgo8L2Zvb3Rlcj5gOwoKLy8gSW5qZWN0IG5hdgpkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdET01Db250ZW50TG9hZGVkJywgKCkgPT4gewogIC8vIE5hdgogIGNvbnN0IG5hdkVsID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcignI3NpdGUtbmF2Jyk7CiAgaWYgKG5hdkVsKSBuYXZFbC5pbm5lckhUTUwgPSBOQVZfSFRNTDsKCiAgLy8gRm9vdGVyCiAgY29uc3QgZm9vdGVyRWwgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcjc2l0ZS1mb290ZXInKTsKICBpZiAoZm9vdGVyRWwpIGZvb3RlckVsLmlubmVySFRNTCA9IEZPT1RFUl9IVE1MOwoKICAvLyBGaXggcGF0aHMgZm9yIHBhZ2VzIHN1YmRpcmVjdG9yeQogIGNvbnN0IGlzU3VicGFnZSA9IHdpbmRvdy5sb2NhdGlvbi5wYXRobmFtZS5pbmNsdWRlcygnL3BhZ2VzLycpOwogIGlmIChpc1N1YnBhZ2UpIHsKICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJ2FbaHJlZl0sIGltZ1tzcmNdJykuZm9yRWFjaChlbCA9PiB7CiAgICAgIGNvbnN0IHRhZyA9IGVsLnRhZ05hbWUudG9Mb3dlckNhc2UoKTsKICAgICAgaWYgKHRhZyA9PT0gJ2ltZycpIHsKICAgICAgICBjb25zdCBzcmMgPSBlbC5nZXRBdHRyaWJ1dGUoJ3NyYycpOwogICAgICAgIGlmIChzcmMgJiYgc3JjLnN0YXJ0c1dpdGgoJ2ltYWdlcy8nKSkgZWwuc2V0QXR0cmlidXRlKCdzcmMnLCAnLi4vJyArIHNyYyk7CiAgICAgIH0gZWxzZSB7CiAgICAgICAgY29uc3QgaHJlZiA9IGVsLmdldEF0dHJpYnV0ZSgnaHJlZicpOwogICAgICAgIGlmICghaHJlZikgcmV0dXJuOwogICAgICAgIGlmIChocmVmLnN0YXJ0c1dpdGgoJ2ltYWdlcy8nKSkgZWwuc2V0QXR0cmlidXRlKCdocmVmJywgJy4uLycgKyBocmVmKTsKICAgICAgICBpZiAoaHJlZi5zdGFydHNXaXRoKCdwYWdlcy8nKSkgZWwuc2V0QXR0cmlidXRlKCdocmVmJywgaHJlZi5yZXBsYWNlKCdwYWdlcy8nLCAnJykpOwogICAgICAgIGlmIChocmVmID09PSAnaW5kZXguaHRtbCcpIGVsLnNldEF0dHJpYnV0ZSgnaHJlZicsICcuLi9pbmRleC5odG1sJyk7CiAgICAgIH0KICAgIH0pOwogIH0KfSk7Cg=="}
+/* ============================================================
+   COACHES' BOX — Shared Layout Injection (nav + footer)
+   ============================================================ */
+
+const NAV_HTML = `
+<style>
+  /* Hamburger-only navigation — one menu on every screen size */
+  #site-nav .container { position: relative; }
+  #site-nav .nav__links { display: none !important; }
+  #site-nav .nav__cta { display: none !important; }
+  #site-nav .nav__toggle { display: flex !important; }
+  #site-nav .nav__mobile {
+    display: none;
+    position: absolute; top: calc(100% + 10px); right: var(--space-4, 16px);
+    flex-direction: column; gap: 2px;
+    min-width: 240px;
+    background: #0A0A0A;
+    border: 1px solid rgba(200,168,75,0.28);
+    border-radius: 14px;
+    padding: var(--space-4, 16px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+    z-index: 300;
+  }
+  #site-nav .nav__mobile.open { display: flex !important; }
+  #site-nav .nav__mobile a {
+    padding: 11px 14px; border-radius: 9px;
+    font-size: 0.95rem; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: none;
+    text-decoration: none; color: rgba(255,255,255,0.85);
+    transition: background 200ms ease, color 200ms ease;
+  }
+  #site-nav .nav__mobile a:hover { color: #C8A84B; background: rgba(200,168,75,0.10); }
+  #site-nav .nav__mobile a.active { color: #C8A84B; }
+  #site-nav .nav__mobile .btn { margin-top: var(--space-3, 12px); width: 100%; text-align: center; }
+  #site-nav .nav__toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  #site-nav .nav__toggle.is-open span:nth-child(2) { opacity: 0; }
+  #site-nav .nav__toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+</style>
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Coaches' Box Home" style="position:relative;display:inline-flex;align-items:flex-start;">
+        <img src="images/logo.png" alt="Coaches' Box Logo" class="nav__logo-img">
+        <sup style="font-size:9px;color:#C8A84B;font-family:Trebuchet MS,sans-serif;font-weight:bold;margin-left:1px;margin-top:3px;">&trade;</sup>
+      </a>
+      <div style="display:flex;align-items:center;gap:var(--space-3);">
+        <button class="nav__toggle" data-nav-toggle aria-expanded="false" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav__mobile" aria-label="Site menu">
+      <a href="index.html">Home</a>
+      <a href="pages/about.html">About</a>
+      <a href="pages/products.html">Products</a>
+      <a href="pages/books.html">Bookshelf</a>
+      <a href="pages/blog.html">Blog</a>
+      <a href="pages/contact.html">Contact</a>
+      <a href="pages/contact.html" class="btn btn--primary">Get Early Access</a>
+    </nav>
+  </div>
+</nav>`;
+
+const FOOTER_HTML = `
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="images/logo.png" alt="Coaches' Box Logo" class="nav__logo-img">
+        <p>Empowering coaches with innovative technology that transforms the way athletes learn, teams prepare, and programs succeed.</p>
+        <p class="footer__tagline">BUILDING BETTER COACHES. DEVELOPING BETTER LEADERS.</p>
+      </div>
+      <div>
+        <p class="footer__heading">Company</p>
+        <ul class="footer__links" role="list">
+          <li><a href="pages/about.html">About Us</a></li>
+          <li><a href="pages/products.html">Products</a></li>
+          <li><a href="pages/books.html">Bookshelf</a></li>
+          <li><a href="pages/blog.html">Blog</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Products</p>
+        <ul class="footer__links" role="list">
+          <li><a href="pages/products.html">Virtual Practice Simulator</a></li>
+          <li><a href="pages/products.html">AI Practice Builder</a></li>
+          <li><a href="pages/products.html">Practice Planning</a></li>
+          <li><a href="pages/products.html">Analytics</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__heading">Connect</p>
+        <ul class="footer__links" role="list">
+          <li><a href="mailto:info@coachesbox.ai">info@coachesbox.ai</a></li>
+          <li><a href="tel:3213779494">321.377.9494</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61591734908628" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/thecoachesboxapp" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 The Coaches' Box&trade;, LLC. All rights reserved. Patent Pending.</span>
+      <span>Winter Springs, Florida &middot; coachesbox.ai</span>
+    </div>
+  </div>
+</footer>`;
+
+// Inject nav + footer
+document.addEventListener('DOMContentLoaded', () => {
+  // Nav
+  const navEl = document.querySelector('#site-nav');
+  if (navEl) navEl.innerHTML = NAV_HTML;
+
+  // Footer
+  const footerEl = document.querySelector('#site-footer');
+  if (footerEl) footerEl.innerHTML = FOOTER_HTML;
+
+  // Fix paths for pages subdirectory
+  const isSubpage = window.location.pathname.includes('/pages/');
+  if (isSubpage) {
+    document.querySelectorAll('a[href], img[src]').forEach(el => {
+      const tag = el.tagName.toLowerCase();
+      if (tag === 'img') {
+        const src = el.getAttribute('src');
+        if (src && src.startsWith('images/')) el.setAttribute('src', '../' + src);
+      } else {
+        const href = el.getAttribute('href');
+        if (!href) return;
+        if (href.startsWith('images/')) el.setAttribute('href', '../' + href);
+        if (href.startsWith('pages/')) el.setAttribute('href', href.replace('pages/', ''));
+        if (href === 'index.html') el.setAttribute('href', '../index.html');
+      }
+    });
+  }
+
+  // Hamburger toggle — bound here so it works on every screen size,
+  // regardless of when main.js runs relative to nav injection.
+  const toggle = navEl ? navEl.querySelector('[data-nav-toggle]') : null;
+  const mobile = navEl ? navEl.querySelector('.nav__mobile') : null;
+  if (toggle && mobile) {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = mobile.classList.toggle('open');
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', (e) => {
+      if (!navEl.contains(e.target)) {
+        mobile.classList.remove('open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+});
