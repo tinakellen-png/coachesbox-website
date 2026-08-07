@@ -78,6 +78,7 @@ const FOOTER_HTML = `
           <li><a href="pages/books.html">Bookshelf</a></li>
           <li><a href="pages/blog.html">Blog</a></li>
           <li><a href="pages/contact.html">Contact</a></li>
+          <li><a href="pages/privacy.html">Privacy Policy</a></li>
         </ul>
       </div>
       <div>
