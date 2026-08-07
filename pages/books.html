@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coaches' Bookshelf | Coaches' Box&trade;</title>
+  <meta name="description" content="The Coaches' Box Elite Coach's Reading List — the books that shape how great coaches lead, teach, prepare, and win. Curated recommendations for every coach's library.">
+  <meta property="og:title" content="Coaches' Bookshelf | The Coaches' Box">
+  <meta property="og:description" content="The Elite Coach's Reading List — curated books on leadership, teaching, and winning cultures.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <style>
+    .bookshelf-hero { background: var(--black); padding-block: clamp(var(--space-16), 9vw, var(--space-24)); text-align: center; position: relative; overflow: hidden; }
+    .bookshelf-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 90% at 50% 0%, rgba(200,168,75,0.14) 0%, transparent 70%); pointer-events: none; }
+    .bookshelf-hero__eyebrow { font-size: var(--text-sm); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .bookshelf-hero__title { font-family: var(--font-display); font-size: var(--text-3xl); letter-spacing: 0.02em; color: var(--white); line-height: 1.05; margin-top: var(--space-4); }
+    .bookshelf-hero__sub { max-width: 62ch; margin: var(--space-5) auto 0; font-size: var(--text-lg); color: rgba(255,255,255,0.72); line-height: 1.6; }
+    .disclosure { max-width: 72ch; margin: var(--space-8) auto 0; font-size: var(--text-xs); color: rgba(255,255,255,0.5); border: 1px solid rgba(200,168,75,0.25); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-6); line-height: 1.6; }
+    .bookshelf-section { background: #F5F3ED; padding-block: clamp(var(--space-16), 8vw, var(--space-24)); }
+    .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-8); margin-top: var(--space-4); }
+    .book-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid rgba(10,10,10,0.08); border-radius: var(--radius-xl); overflow: hidden; box-shadow: 0 6px 22px rgba(10,10,10,0.06); transition: transform var(--transition), box-shadow var(--transition); }
+    .book-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,10,10,0.12); }
+    .book-card__cover { position: relative; background: #0A0A0A; aspect-ratio: 3 / 2; display: flex; align-items: center; justify-content: center; padding: var(--space-6); }
+    .book-card__cover img { max-height: 220px; max-width: 100%; width: auto; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 3px; }
+    .book-card__fallback { display: none; align-items: center; justify-content: center; text-align: center; width: 150px; height: 210px; padding: var(--space-4); background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(200,168,75,0.4); border-radius: 4px; }
+    .book-card__fallback span { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 0.04em; color: var(--gold); line-height: 1.2; }
+    .book-card__body { display: flex; flex-direction: column; flex: 1; padding: var(--space-6); }
+    .book-card__title { font-size: 1.15rem; font-weight: 700; color: var(--black); line-height: 1.25; font-family: 'Work Sans', sans-serif; }
+    .book-card__author { font-size: var(--text-sm); color: var(--gold-dark); font-weight: 600; margin-top: var(--space-2); }
+    .book-card__blurb { font-size: var(--text-sm); color: rgba(10,10,10,0.68); line-height: 1.55; margin-top: var(--space-3); flex: 1; }
+    .book-card__btn { display: inline-block; margin-top: var(--space-5); text-align: center; background: var(--gold); color: #0A0A0A; font-weight: 700; letter-spacing: 0.02em; padding: var(--space-3) var(--space-5); border-radius: var(--radius-md); text-decoration: none; transition: background var(--transition), transform var(--transition); }
+    .book-card__btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .bookshelf-note { max-width: 70ch; margin: var(--space-16) auto 0; text-align: center; font-size: var(--text-sm); color: rgba(10,10,10,0.55); line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <main>
+    <section class="bookshelf-hero">
+      <div class="container" style="position:relative;">
+        <p class="bookshelf-hero__eyebrow">Coaches' Bookshelf</p>
+        <h1 class="bookshelf-hero__title">The Elite Coach's Reading List</h1>
+        <p class="bookshelf-hero__sub">Great coaching is built on more than X's and O's. These are the books that shape how the best coaches lead, teach, prepare, and build cultures that last &mdash; hand-picked for your library.</p>
+        <p class="disclosure"><strong style="color:rgba(255,255,255,0.7);">A note on our links:</strong> Some links on this page are affiliate links. The Coaches' Box is joining the Amazon Associates Program &mdash; once we're approved, qualifying purchases made through these links may earn us a small commission, at no additional cost to you. We only recommend books we genuinely believe make coaches better.</p>
+      </div>
+    </section>
+
+    <section class="bookshelf-section">
+      <div class="container">
+        <div class="book-grid">
+      <article class="book-card">
+        <div class="book-card__cover">
+          <img src="https://covers.openlibrary.org/b/isbn/9780486832944-L.jpg?default=false" alt="The Art of War book cover" loading="lazy"
+               onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.book-card__fallback').style.display='flex';">
+          <div class="book-card__fallback"><span>The Art of War</span></div>
+        </div>
+        <div class="book-card__body">
+          <h3 class="book-card__title">The Art of War</h3>
+          <p class="book-card__author">Sun Tzu</p>
+          <p class="book-card__blurb">The ancient playbook on strategy, deception, and winning the battle before it's fought.</p>
+          <a class="book-card__btn" href="https://www.amazon.com/dp/0486832945" target="_blank" rel="noopener sponsored">View on Amazon &rarr;</a>
+        </div>
+      </article>
+      <article class="book-card">
+        <div class="book-card__cover">
+          <img src="https://covers.openlibrary.org/b/isbn/9780807014264-L.jpg?default=false" alt="Man's Search for Meaning book cover" loading="lazy"
+               onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.book-card__fallback').style.display='flex';">
+          <div class="book-card__fallback"><span>Man's Search for Meaning</span></div>
+        </div>
+        <div class="book-card__body">
+          <h3 class="book-card__title">Man's Search for Meaning</h3>
+          <p class="book-card__author">Viktor E. Frankl</p>
+          <p class="book-card__blurb">Purpose as the ultimate source of resilience, from a Holocaust survivor and psychiatrist.</p>
+          <a class="book-card__btn" href="https://www.amazon.com/dp/0807014265" target="_blank" rel="noopener sponsored">View on Amazon &rarr;</a>
+        </div>
+      </article>
+      <article class="book-card">
+        <div class="book-card__cover">
+          <img src="https://covers.openlibrary.org/b/isbn/9780684870182-L.jpg?default=false" alt="When Pride Still Mattered: A Life of Vince Lombardi book cover" loading="lazy"
+               onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.book-card__fallback').style.display='flex';">
+          <div class="book-card__fallback"><span>When Pride Still Mattered: A Life of Vince Lombardi</span></div>
+        </div>
+        <div class="book-card__body">
+          <h3 class="book-card__title">When Pride Still Mattered: A Life of Vince Lombardi</h3>
+          <p class="book-card__author">David Maraniss</p>
+          <p class="book-card__blurb">The definitive biography of football's most demanding and beloved leader.</p>
+          <a class="book-card__btn" href="https://www.amazon.com/dp/0684870185" target="_blank" rel="noopener sponsored">View on Amazon &rarr;</a>
+        </div>
+      </article>
+      <article class="book-card">
+        <div class="book-card__cover">
+          <img src="https://covers.openlibrary.org/b/isbn/9780593192764-L.jpg?default=false" alt="Win the Day: 7 Daily Habits to Help You Stress Less &amp; Accomplish More book cover" loading="lazy"
+               onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.book-card__fallback').style.display='flex';">
+          <div class="book-card__fallback"><span>Win the Day: 7 Daily Habits to Help You Stress Less &amp; Accomplish More</span></div>
+        </div>
+        <div class="book-card__body">
+          <h3 class="book-card__title">Win the Day: 7 Daily Habits to Help You Stress Less &amp; Accomplish More</h3>
+          <p class="book-card__author">Mark Batterson</p>
+          <p class="book-card__blurb">Seven daily habits to stress less, stay present, and finish what matters most.</p>
+          <a class="book-card__btn" href="https://www.amazon.com/dp/0593192761" target="_blank" rel="noopener sponsored">View on Amazon &rarr;</a>
+        </div>
+      </article>
+      <article class="book-card">
+        <div class="book-card__cover">
+          <img src="https://covers.openlibrary.org/b/isbn/9780312267551-L.jpg?default=false" alt="The Junction Boys book cover" loading="lazy"
+               onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.book-card__fallback').style.display='flex';">
+          <div class="book-card__fallback"><span>The Junction Boys</span></div>
+        </div>
+        <div class="book-card__body">
+          <h3 class="book-card__title">The Junction Boys</h3>
+          <p class="book-card__author">Jim Dent</p>
+          <p class="book-card__blurb">Ten brutal days that forged a championship culture under Bear Bryant.</p>
+          <a class="book-card__btn" href="https://www.amazon.com/dp/031226755X" target="_blank" rel="noopener sponsored">View on Amazon &rarr;</a>
+        </div>
+      </article>
+      <article class="book-card">
+        <div class="book-card__cover">
+          <img src="https://covers.openlibrary.org/b/isbn/9781414318011-L.jpg?default=false" alt="Quiet Strength book cover" loading="lazy"
+               onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.book-card__fallback').style.display='flex';">
+          <div class="book-card__fallback"><span>Quiet Strength</span></div>
+        </div>
+        <div class="book-card__body">
+          <h3 class="book-card__title">Quiet Strength</h3>
+          <p class="book-card__author">Tony Dungy</p>
+          <p class="book-card__blurb">Tony Dungy on leading with character, faith, and steady, unshakable conviction.</p>
+          <a class="book-card__btn" href="https://www.amazon.com/dp/1414318014" target="_blank" rel="noopener sponsored">View on Amazon &rarr;</a>
+        </div>
+      </article>
+      <article class="book-card">
+        <div class="book-card__cover">
+          <img src="https://covers.openlibrary.org/b/isbn/9781472103536-L.jpg?default=false" alt="Legacy book cover" loading="lazy"
+               onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.book-card__fallback').style.display='flex';">
+          <div class="book-card__fallback"><span>Legacy</span></div>
+        </div>
+        <div class="book-card__body">
+          <h3 class="book-card__title">Legacy</h3>
+          <p class="book-card__author">James Kerr</p>
+          <p class="book-card__blurb">Fifteen leadership lessons from the world's most successful team, the All Blacks.</p>
+          <a class="book-card__btn" href="https://www.amazon.com/dp/147210353X" target="_blank" rel="noopener sponsored">View on Amazon &rarr;</a>
+        </div>
+      </article>
+      <article class="book-card">
+        <div class="book-card__cover">
+          <img src="https://covers.openlibrary.org/b/isbn/9781913622305-L.jpg?default=false" alt="The Coach's Guide to Teaching book cover" loading="lazy"
+               onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.book-card__fallback').style.display='flex';">
+          <div class="book-card__fallback"><span>The Coach's Guide to Teaching</span></div>
+        </div>
+        <div class="book-card__body">
+          <h3 class="book-card__title">The Coach's Guide to Teaching</h3>
+          <p class="book-card__author">Doug Lemov</p>
+          <p class="book-card__blurb">Doug Lemov on the science of teaching skills that actually stick with players.</p>
+          <a class="book-card__btn" href="https://www.amazon.com/dp/1913622304" target="_blank" rel="noopener sponsored">View on Amazon &rarr;</a>
+        </div>
+      </article>
+      <article class="book-card">
+        <div class="book-card__cover">
+          <img src="https://covers.openlibrary.org/b/isbn/9780800724931-L.jpg?default=false" alt="3D Coach: Capturing the Heart Behind the Jersey book cover" loading="lazy"
+               onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.book-card__fallback').style.display='flex';">
+          <div class="book-card__fallback"><span>3D Coach: Capturing the Heart Behind the Jersey</span></div>
+        </div>
+        <div class="book-card__body">
+          <h3 class="book-card__title">3D Coach: Capturing the Heart Behind the Jersey</h3>
+          <p class="book-card__author">Jeff Duke</p>
+          <p class="book-card__blurb">Coaching the heart and mind, not just the body — significance over success.</p>
+          <a class="book-card__btn" href="https://www.amazon.com/dp/0800724933" target="_blank" rel="noopener sponsored">View on Amazon &rarr;</a>
+        </div>
+      </article>
+      <article class="book-card">
+        <div class="book-card__cover">
+          <img src="https://covers.openlibrary.org/b/isbn/9780066620992-L.jpg?default=false" alt="Good to Great book cover" loading="lazy"
+               onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.book-card__fallback').style.display='flex';">
+          <div class="book-card__fallback"><span>Good to Great</span></div>
+        </div>
+        <div class="book-card__body">
+          <h3 class="book-card__title">Good to Great</h3>
+          <p class="book-card__author">Jim Collins</p>
+          <p class="book-card__blurb">Why some organizations make the leap: disciplined people, disciplined thought, disciplined action.</p>
+          <a class="book-card__btn" href="https://www.amazon.com/dp/0066620996" target="_blank" rel="noopener sponsored">View on Amazon &rarr;</a>
+        </div>
+      </article>
+      <article class="book-card">
+        <div class="book-card__cover">
+          <img src="https://covers.openlibrary.org/b/isbn/9780313374944-L.jpg?default=false" alt="Stand Your Ground: Building Honorable Leaders the West Point Way book cover" loading="lazy"
+               onerror="this.onerror=null;this.style.display='none';this.parentElement.querySelector('.book-card__fallback').style.display='flex';">
+          <div class="book-card__fallback"><span>Stand Your Ground: Building Honorable Leaders the West Point Way</span></div>
+        </div>
+        <div class="book-card__body">
+          <h3 class="book-card__title">Stand Your Ground: Building Honorable Leaders the West Point Way</h3>
+          <p class="book-card__author">Evan H. Offstein</p>
+          <p class="book-card__blurb">How West Point builds honorable leaders of character, on and off the field.</p>
+          <a class="book-card__btn" href="https://www.amazon.com/dp/0313374945" target="_blank" rel="noopener sponsored">View on Amazon &rarr;</a>
+        </div>
+      </article>
+        </div>
+        <p class="bookshelf-note">These are genuine recommendations we believe make every coach better. Prices and availability are set by Amazon and may change. Have a book that belongs on this list? <a href="contact.html" style="color:var(--gold-dark);font-weight:600;">Let us know &rarr;</a></p>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="../js/layout.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
