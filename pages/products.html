@@ -168,93 +168,45 @@
           </div>
         </div>
 
-                <!-- SINGLE-PLAY PREVIEW -->
+                <!-- SINGLE-PLAY PREVIEW (real 3D clip) -->
         <div data-reveal style="margin:var(--space-12) 0;">
           <div style="text-align:center;margin-bottom:var(--space-6);">
             <span style="font-size:var(--text-sm);letter-spacing:0.15em;text-transform:uppercase;color:#C8A84B;font-weight:600;">Play Preview</span>
             <h3 style="font-size:var(--text-2xl);font-weight:700;color:#0A0A0A;margin-top:var(--space-2);">See It In Action</h3>
-            <p style="font-size:var(--text-base);color:rgba(10,10,10,0.62);max-width:54ch;margin:var(--space-3) auto 0;">Here is one look from inside the simulator &mdash; the Smash-Vertical concept developing just the way your players will see it. Press play to run it.</p>
+            <p style="font-size:var(--text-base);color:rgba(10,10,10,0.62);max-width:54ch;margin:var(--space-3) auto 0;">Here is one look from inside the simulator &mdash; the Smash-Vertical concept, running with our 3D players just the way your team will see it.</p>
           </div>
           <div style="max-width:900px;margin-inline:auto;">
-            <div style="position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(200,168,75,0.3);box-shadow:0 8px 40px rgba(0,0,0,0.5);background:#2f7a3a;">
-              <canvas id="cbdemo-canvas" width="900" height="480" style="display:block;width:100%;height:auto;"></canvas>
-              <div style="position:absolute;top:12px;left:16px;background:rgba(10,10,10,0.62);color:#C8A84B;font-size:12px;font-weight:700;letter-spacing:0.12em;padding:4px 10px;border-radius:6px;">SMASH VERTICAL</div>
+            <div id="cbplay-stage" style="position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(200,168,75,0.3);box-shadow:0 8px 40px rgba(0,0,0,0.5);background:#000;">
+              <video id="cbplay-video" playsinline muted preload="auto" poster="../assets/video/smash-vertical-poster.jpg" style="display:block;width:100%;height:auto;">
+                <source src="../assets/video/smash-vertical.webm" type="video/webm">
+                <source src="../assets/video/smash-vertical.mp4" type="video/mp4">
+              </video>
+              <div style="position:absolute;top:12px;left:16px;background:rgba(10,10,10,0.62);color:#C8A84B;font-size:12px;font-weight:700;letter-spacing:0.12em;padding:4px 10px;border-radius:6px;pointer-events:none;">SMASH VERTICAL</div>
+              <button id="cbplay-again" type="button" aria-label="Play again" style="display:none;position:absolute;inset:0;margin:auto;width:auto;height:auto;align-items:center;justify-content:center;gap:10px;background:rgba(10,10,10,0.45);color:#fff;border:none;cursor:pointer;font-family:inherit;font-size:1.05rem;font-weight:700;letter-spacing:0.02em;">
+                <span style="display:inline-flex;align-items:center;gap:10px;background:#C8A84B;color:#0A0A0A;padding:12px 22px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,0.4);">&#8635;&nbsp;Play Again</span>
+              </button>
             </div>
             <div style="text-align:center;margin-top:var(--space-6);">
-              <button id="cbdemo-btn" type="button" class="btn btn--primary">&#9654;&nbsp; Try It Out</button>
-              <p style="font-size:var(--text-sm);color:rgba(10,10,10,0.55);max-width:54ch;margin:var(--space-4) auto 0;">This is a single-play preview. Want the full simulator &mdash; every formation, coverage, and concept? <a href="contact.html" style="color:var(--gold-dark);font-weight:600;">Start your free 2-week trial.</a></p>
+              <p style="font-size:var(--text-sm);color:rgba(10,10,10,0.55);max-width:54ch;margin:0 auto;">This is a single-play preview. Want the full simulator &mdash; every formation, coverage, and concept? <a href="contact.html" style="color:var(--gold-dark);font-weight:600;">Start your free 2-week trial.</a></p>
             </div>
           </div>
           <script>
           (function(){
-            var cv = document.getElementById('cbdemo-canvas');
-            if(!cv || !cv.getContext) return;
-            var ctx = cv.getContext('2d');
-            var W = cv.width, H = cv.height;
-            var GOLD = '#C8A84B', WHITE = '#f2f2f2', BALL = '#7a4a1e';
-            var LOS = 330;
-            var OL = [[450,LOS],[408,LOS],[492,LOS],[368,LOS],[532,LOS]];
-            var recs = [
-              {name:'X', col:WHITE, route:[[110,LOS],[112,95]]},
-              {name:'H', col:WHITE, route:[[300,LOS-2],[320,120]]},
-              {name:'Y', col:GOLD, target:true, route:[[600,LOS-2],[598,225],[772,118]]},
-              {name:'Z', col:WHITE, route:[[792,LOS],[790,268],[784,286]]}
-            ];
-            var RB = {route:[[406,378],[474,360],[566,352]]};
-            var QB = {route:[[450,378],[450,405],[452,420]]};
-            var defs = [ {route:[[792,252],[786,300]]}, {route:[[520,150],[648,178]]} ];
-            var catchPoint = [772,118];
-            var T_pre=0.6, T_route=2.2, T_throw=2.95, T_flight=0.85, T_hold=1.1;
-            var TOTAL = T_throw + T_flight + T_hold;
-            var startTime=null, raf=null, playing=false;
-            var btn = document.getElementById('cbdemo-btn');
-
-            function lerpPath(path, p){
-              if(p<=0) return path[0].slice();
-              if(p>=1) return path[path.length-1].slice();
-              var segs=[], total=0, i;
-              for(i=0;i<path.length-1;i++){var dx=path[i+1][0]-path[i][0],dy=path[i+1][1]-path[i][1];var d=Math.sqrt(dx*dx+dy*dy);segs.push(d);total+=d;}
-              var dist=p*total, acc=0;
-              for(i=0;i<segs.length;i++){ if(acc+segs[i]>=dist){var t=(dist-acc)/segs[i];return [path[i][0]+(path[i+1][0]-path[i][0])*t, path[i][1]+(path[i+1][1]-path[i][1])*t];} acc+=segs[i]; }
-              return path[path.length-1].slice();
-            }
-            function drawField(){
-              ctx.fillStyle='#2f7a3a'; ctx.fillRect(0,0,W,H);
-              ctx.fillStyle='rgba(255,255,255,0.045)';
-              for(var y=0;y<H;y+=48){ if((Math.floor(y/48))%2===0) ctx.fillRect(0,y,W,48); }
-              ctx.strokeStyle='rgba(255,255,255,0.28)'; ctx.lineWidth=2;
-              for(var yy=40;yy<H;yy+=60){ ctx.beginPath();ctx.moveTo(0,yy);ctx.lineTo(W,yy);ctx.stroke(); }
-              ctx.strokeStyle='rgba(255,255,255,0.85)'; ctx.lineWidth=3; ctx.beginPath();ctx.moveTo(0,LOS);ctx.lineTo(W,LOS);ctx.stroke();
-            }
-            function drawTrail(path,p,col){
-              ctx.strokeStyle=col; ctx.lineWidth=3; ctx.setLineDash([7,7]); ctx.beginPath();
-              ctx.moveTo(path[0][0],path[0][1]);
-              var N=44; for(var i=1;i<=N;i++){var pt=lerpPath(path,(i/N)*p); ctx.lineTo(pt[0],pt[1]);}
-              ctx.stroke(); ctx.setLineDash([]);
-            }
-            function dot(x,y,col,r,label){
-              ctx.beginPath();ctx.arc(x,y,r||9,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();
-              ctx.lineWidth=2;ctx.strokeStyle='rgba(0,0,0,0.35)';ctx.stroke();
-              if(label){ctx.fillStyle='#0a0a0a';ctx.font='bold 11px Arial, sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(label,x,y);}
-            }
-            function frame(t){
-              drawField();
-              var rp = Math.max(0, Math.min(1, (t - T_pre)/T_route));
-              var i;
-              for(i=0;i<recs.length;i++){ drawTrail(recs[i].route, rp, recs[i].target?GOLD:'rgba(242,242,242,0.75)'); }
-              drawTrail(RB.route, rp, 'rgba(242,242,242,0.5)');
-              for(i=0;i<defs.length;i++){var dp=lerpPath(defs[i].route, rp); dot(dp[0],dp[1],'#c0392b',8);}
-              for(i=0;i<OL.length;i++){ dot(OL[i][0],OL[i][1],'#333',8); }
-              for(i=0;i<recs.length;i++){var pt=lerpPath(recs[i].route, rp); dot(pt[0],pt[1],recs[i].col,10,recs[i].name);}
-              var rbp=lerpPath(RB.route, rp); dot(rbp[0],rbp[1],WHITE,9,'RB');
-              var qp = Math.max(0,Math.min(1,(t-T_pre)/0.8)); var qpt=lerpPath(QB.route,qp); dot(qpt[0],qpt[1],GOLD,10,'QB');
-              if(t>=T_throw){ var bt=Math.min(1,(t-T_throw)/T_flight); var bx=qpt[0]+(catchPoint[0]-qpt[0])*bt; var by=qpt[1]+(catchPoint[1]-qpt[1])*bt; var arc=Math.sin(bt*Math.PI)*44; ctx.save(); ctx.translate(bx,by-arc); ctx.rotate(Math.atan2(catchPoint[1]-qpt[1],catchPoint[0]-qpt[0])); ctx.beginPath();ctx.ellipse(0,0,8,4.5,0,0,Math.PI*2);ctx.fillStyle=BALL;ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.2;ctx.stroke(); ctx.restore(); }
-              if(t>=T_throw+T_flight){ ctx.fillStyle=GOLD;ctx.font='bold 22px Arial, sans-serif';ctx.textAlign='center';ctx.fillText('COMPLETE', catchPoint[0]-30, catchPoint[1]-22); }
-            }
-            function loop(ts){ if(startTime===null)startTime=ts; var t=(ts-startTime)/1000; frame(t); if(t<TOTAL){raf=requestAnimationFrame(loop);} else {playing=false; btn.innerHTML='&#8635;&nbsp; Run It Again';} }
-            function play(){ if(playing)return; playing=true; startTime=null; btn.innerHTML='Running&hellip;'; if(raf)cancelAnimationFrame(raf); raf=requestAnimationFrame(loop); }
-            frame(0);
-            if(btn) btn.addEventListener('click', play);
+            var v = document.getElementById('cbplay-video');
+            var again = document.getElementById('cbplay-again');
+            if(!v || !again) return;
+            function showBtn(){ again.style.display='flex'; }
+            function hideBtn(){ again.style.display='none'; }
+            v.addEventListener('ended', showBtn);
+            again.addEventListener('click', function(){ hideBtn(); v.currentTime=0; v.play(); });
+            // Autoplay once on load; if the browser blocks it, reveal the button so the visitor can start it.
+            var tryPlay = function(){ var p = v.play(); if(p && p.catch){ p.catch(function(){ showBtn(); }); } };
+            if('IntersectionObserver' in window){
+              var io = new IntersectionObserver(function(entries){
+                entries.forEach(function(e){ if(e.isIntersecting){ tryPlay(); io.disconnect(); } });
+              }, {threshold:0.4});
+              io.observe(v);
+            } else { tryPlay(); }
           })();
           </script>
         </div>
